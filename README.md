@@ -1,5 +1,5 @@
 # 👅 Ponita0 - LickMyRunes
- # [⬇️ Download ⬇️](https://github.com/Ponita0/LickMyRunes/releases/download/1.0.2/LicMyRunes-v1.0.2.rar)
+ # [click here to go to Download  ](https://github.com/Ponita0/LickMyRunes/releases/latest)
 Sometimes .. we don't have time ⏳  to search the runes  in league of legends.
 and this will be sh1t  
 imagine playing Rammus arcane commit  

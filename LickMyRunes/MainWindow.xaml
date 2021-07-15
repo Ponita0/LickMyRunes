@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LickMyRunes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="264.223" Width="250"
+        Title="MainWindow" Height="273.89" Width="250"
         WindowStyle="None"
         ResizeMode="NoResize"
         AllowsTransparency="True"
@@ -105,12 +105,12 @@
                 </StackPanel>
             </ComboBoxItem>
         </ComboBox>-->
-        <Button Click="Button_Click_2" Background="Transparent"  BorderBrush="Transparent" HorizontalAlignment="Left" Margin="13,223,0,0" VerticalAlignment="Top" Width="111" Height="35">
+        <Button Click="Button_Click_2" Background="Transparent"  BorderBrush="Transparent" HorizontalAlignment="Left" Margin="13,199,0,0" VerticalAlignment="Top" Width="111" Height="35">
             <StackPanel>
                 <Image Source="images/discord.png" Height="34"/>
             </StackPanel>
         </Button>
-        <Button Click="githubBTN_Click" Name="githubBTN" HorizontalAlignment="Left" Margin="129,223,0,0" VerticalAlignment="Top" BorderBrush="Transparent" Width="111" Height="35" Background="Transparent">
+        <Button Click="githubBTN_Click" Name="githubBTN" HorizontalAlignment="Left" Margin="129,198,0,0" VerticalAlignment="Top" BorderBrush="Transparent" Width="111" Height="35" Background="Transparent">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Width="100" >
                 <Image Source="images/github.png"  Width="26"/>
                 <Label Content="Github" FontFamily="/LickMyRunes;component/fonts/#Roboto"/>
@@ -121,6 +121,7 @@
         <Button Content="Dodge" HorizontalAlignment="Left" Margin="111,92,0,0" VerticalAlignment="Top" Width="129" FontFamily="/LickMyRunes;component/fonts/#Roboto" Height="27" Click="Button_Click_3" FontSize="18" Background="Transparent"/>
         <Button IsEnabled="False"  Name="btnPush" Content="Push Runes" HorizontalAlignment="Left" Margin="111,157,0,0" VerticalAlignment="Top" Width="129" Height="31" Click="btnPush_Click" FontFamily="/LickMyRunes;component/fonts/#Roboto" FontSize="16" Background="Transparent" />
         <Label Content="" Name="lblCurrentPhase" HorizontalAlignment="Left" Margin="14,69,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Button Content="Send ticket" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="230" Height="28" BorderBrush="Transparent" Background="#273c75" Foreground="#f5f6fa" Click="Button_Click_4"/>
 
     </Grid>
 

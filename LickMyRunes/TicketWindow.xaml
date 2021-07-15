@@ -1,0 +1,28 @@
+﻿<Window x:Class="LickMyRunes.TicketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LickMyRunes"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        MouseDown="Window_MouseDown"
+        Title="Send a discord Ticket" Height="253.053" Width="392.73">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#06beb6    " Offset="1"/>
+                <GradientStop Color="#4e4376" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBox x:Name="discordTagtxt" HorizontalAlignment="Left" Height="23" Margin="171,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="211" Background="Transparent" />
+        <Label Content="Discord tag / Facebook url :" HorizontalAlignment="Left" Margin="12,23,0,0" VerticalAlignment="Top" Foreground="#f5f6fa"/>
+        <Label Content="Message body : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,54,0,0" Foreground="#f5f6fa"/>
+        <TextBox x:Name="txtmessageBody" HorizontalAlignment="Left" Height="186" Margin="113,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="269" Background="Transparent"/>
+        <Button Content="Send" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top" Width="98" Height="41" Click="Button_Click"/>
+        <TextBlock IsEnabled="False" HorizontalAlignment="Left" Margin="10,85,0,0" TextWrapping="Wrap" Text="you need to enter a discord tag or facebook url so i can reach you and fix your problem ( if there is one )" VerticalAlignment="Top" Height="113" Width="98"/>
+
+    </Grid>
+</Window>

@@ -158,8 +158,9 @@ namespace LickMyRunes
         {
             MessageBox.Show("its simple ! \n" +
                 "1- Just go into champ select \n" +
-                "2- pick you champion \n" +
-                "the program will do everything else automatically");
+                "2- pick your champion \n" +
+                "3- click push runes \n" +
+                "simple as that !");
         }
 
         private void onRestartClicked(object sender, EventArgs e)
@@ -167,7 +168,7 @@ namespace LickMyRunes
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();
         }
-
+      
         protected override void OnStateChanged(EventArgs e)
         {
             if (WindowState == System.Windows.WindowState.Minimized)
@@ -238,15 +239,25 @@ namespace LickMyRunes
                     System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
                     {
                         lblCurrentPhase.Content = "Lobby";
+                        btnPush.IsEnabled = false;
+
                     });
                     LeagueClient.Unsubscribe("/lol-champ-select/v1/session", champSelectSession);
                     break;
                 case "None":
                     System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
                     {
-                        lblCurrentPhase.Content = "None";
+                        lblCurrentPhase.Content = "None"; btnPush.IsEnabled = false;
+
                     });
                     break;
+                case "GameStart":
+                    System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
+                    {
+                        btnPush.IsEnabled = false;
+
+                    });
+                    break;              
                 default:
                     break;
             }
@@ -265,50 +276,27 @@ namespace LickMyRunes
                 //        btnPush.IsEnabled = true;
                 //    });
                 //}
-                if (GameMode=="ARAM")
+                if (GameMode == "ARAM")
                 {
-                    MessageBox.Show("aram");
-                    System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate {
-                                btnPush.IsEnabled = true;
-                            });
+                    System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
+                    {
+                        btnPush.IsEnabled = true;
+                        ChampionPosition[0] = LeagueClient.Request("get", "/lol-champ-select/v1/current-champion", null).Result.Content.ReadAsStringAsync().Result;
+                        ChampionPosition[1] = "ARAM";
+                    });
 
-                    }
+                }
 
                int playerCellId = int.Parse(myData["localPlayerCellId"].ToString());
                 string gameMode = this.GameMode;
-                int lastChamp = -1;
-                if (myData["actions"].Length == 0 || myData["actions"].Length == null)
-                {
-                    MessageBox.Show("ARAM");
-                }
-                else MessageBox.Show(myData["actions"].Length);
+                int lastChamp = -1;               
                 foreach (var action in myData["actions"])
                 {
                     foreach (var actionItem in action)
                     {
                         if (int.Parse(actionItem["actorCellId"].ToString()) == playerCellId)
                         {
-                            if (int.Parse((string)actionItem["championId"]) != 0)
-                            {
-                                var ChampID = int.Parse((string)actionItem["championId"]);
-                                System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
-                                {
-
-                                    if (lastChamp == ChampID) return;
-                                    Image finalImage = new Image();
-                                    BitmapImage logo = new BitmapImage();
-                                    logo.BeginInit();
-                                    logo.UriSource = new Uri("https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/" + ChampID + ".png");
-                                    logo.EndInit();
-                                    finalImage.Source = logo;
-                                    imgChampicon.Source = finalImage.Source;
-                                    ChampionPosition[0] = ChampID.ToString();
-                                    lastChamp = ChampID;
-
-                                });
-                                System.Threading.Thread.Sleep(200);
-
-                            }
+                           
                             if (actionItem["type"] == "pick" && actionItem["completed"] == true)
                             {
                                 foreach (var teamPlayer in myData["myTeam"])
@@ -320,6 +308,25 @@ namespace LickMyRunes
                                         ChampionPosition[0] = champ.ToString(); ChampionPosition[1] = pos;
                                         System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
                                         {
+                                            if (int.Parse((string)actionItem["championId"]) != 0)
+                                            {
+                                                var ChampID = int.Parse((string)actionItem["championId"]);
+                                                System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
+                                                {
+                                                    Image finalImage = new Image();
+                                                    BitmapImage logo = new BitmapImage();
+                                                    logo.BeginInit();
+                                                    logo.UriSource = new Uri("https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/" + ChampID + ".png");
+                                                    logo.EndInit();
+                                                    finalImage.Source = logo;
+                                                    imgChampicon.Source = finalImage.Source;
+                                                    ChampionPosition[0] = ChampID.ToString();
+                                                    lastChamp = ChampID;
+
+                                                });
+                                                System.Threading.Thread.Sleep(200);
+
+                                            }
                                             btnPush.IsEnabled = true;
                                         });
                                     }
@@ -481,7 +488,7 @@ namespace LickMyRunes
                 {
                     ChampionPosition[1] = "ARAM";
                 }
-                else ChampionPosition[1] = GameMode;
+               // else ChampionPosition[1] = GameMode;
 
             }
             if (ChampionPosition[0] == null)
@@ -489,6 +496,12 @@ namespace LickMyRunes
                 ChampionPosition[0] = LeagueClient.Request("get", "/lol-champ-select/v1/current-champion", null).Result.Content.ReadAsStringAsync().Result;
             }
             GetAndPushRunes(ChampionPosition[1], int.Parse(ChampionPosition[0]));
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            TicketWindow tw = new TicketWindow();
+            tw.Show();
         }
     }
 }

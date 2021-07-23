@@ -64,7 +64,7 @@ namespace LickMyRunes
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string message =$"``` {txtmessageBody.Text} ```" ;
-            sendWebHook("https://discord.com/api/webhooks/865367090927894529/KlUEtyjdwX3BqKJEc-NFYbJgwDImbANFf2g-RFNaq6OIPqhZHuxCdXIdl0aZKyVe_BRR", message, "LickMyRunes Tickets", discordTagtxt.Text);
+            sendWebHook("a private webhook url", message, "LickMyRunes Tickets", discordTagtxt.Text);
             MainWindow.notificationManager.Show(new Notifications.Wpf.NotificationContent
             {
                 Title = "Success !",

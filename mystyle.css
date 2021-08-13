@@ -1,0 +1,201 @@
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	background-color: #b2bec3;
+  }
+  div.mar{
+	margin: 50px  0px  0px  200px;
+	font-family: 'Roboto', sans-serif;
+  }
+  a{
+	  color: yellow;
+	  font-weight: 100;
+	  
+  }
+  p{
+color: white;
+font-family: 'Roboto', sans-serif;
+  }
+  h1.hide {
+	position: relative;
+	font-family: 'Roboto', sans-serif;
+	font-family: sans-serif;
+	font-size: 2em;
+	letter-spacing: 4px;
+	overflow: hidden;
+	background: linear-gradient(90deg, #000, #fff, #000);
+	background-repeat: no-repeat;
+	background-size: 80%;
+	animation: animate 3s linear infinite;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: rgba(255, 255, 255, 0);
+  }
+  
+  @keyframes animate {
+	0% {
+	  background-position: -500%;
+	}
+	100% {
+	  background-position: 500%;
+	}
+  }
+
+  * {
+	padding: 0;
+	margin: 0;
+  }
+  .container {
+	width: 100%;
+	min-height: 100vh;
+	background: #333;
+  }
+  .image {
+	perspective: 3000px;
+	width: 40%;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	transform: translate(-50%, -50%);
+	transform-style: preserve-3d;
+  }
+  .image img {
+	transform: rotateX(70deg) rotateZ(-60deg) translate3d(-120px, 0px, 70px);
+	box-shadow: -80px 60px 15px 5px rgba(0,0,0,0.4);
+	transition: all .4s;
+	transform-style: preserve-3d;
+  }
+  .image:hover img {
+	transform: rotateX(0deg) rotateZ(0deg) translate3d(0px, 0px, 0px);
+	box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0);
+  }
+  .container1 {
+	width: 80%;
+	height: 200px;
+	background: aqua;
+	margin: auto;
+	padding: 10px;
+  }
+  
+  .one {
+	width: 70%;
+	float: left;
+	color: white;
+	margin: -200px 0px 0px 0px;
+  }
+  
+  .two {
+	margin-left: 0%;
+	height: 200px;
+	color: white;
+  }
+  .buttonDownload {
+	display: inline-block;
+	top: 0;
+	margin-right: 25px;
+	margin-top: 5px;
+	padding: 10px 25px;
+	background-color: black;
+	color: yellow;
+	position: absolute;
+	right: 0px;
+	font-family: sans-serif;
+	text-decoration: none;
+	font-size: 22px;
+	text-align: center;
+	text-indent: 15px;
+}
+
+.buttonDownload:hover {
+	background-color: #333;
+	color: white;
+}
+
+.buttonDownload:before, .buttonDownload:after {
+	content: ' ';
+	display: block;
+	position: absolute;
+	left: 15px;
+	top: 52%;
+}
+
+/* Download box shape  */
+.buttonDownload:before {
+	width: 10px;
+	height: 2px;
+	border-style: solid;
+	border-width: 0 2px 2px;
+}
+
+/* Download arrow shape */
+.buttonDownload:after {
+	width: 0;
+	height: 0;
+	margin-left: 3px;
+	margin-top: -7px;
+  
+	border-style: solid;
+	border-width: 4px 4px 0 4px;
+	border-color: transparent;
+	border-top-color: inherit;
+	
+	animation: downloadArrow 2s linear infinite;
+	animation-play-state: paused;
+}
+
+.buttonDownload:hover:before {
+	border-color: #4CC713;
+}
+
+.buttonDownload:hover:after {
+	border-top-color: #4CC713;
+	animation-play-state: running;
+}
+
+/* keyframes for the download icon anim */
+@keyframes downloadArrow {
+	/* 0% and 0.001% keyframes used as a hackish way of having the button frozen on a nice looking frame by default */
+	0% {
+		margin-top: -7px;
+		opacity: 1;
+	}
+	
+	0.001% {
+		margin-top: -15px;
+		opacity: 0;
+	}
+	
+	50% {
+		opacity: 1;
+	}
+	
+	100% {
+		margin-top: 0;
+		opacity: 0;
+	}
+}
+.top-container {
+	background-color: #f1f1f1;
+	padding: 30px;
+	text-align: center;
+  }
+  
+  .header {
+	padding: 10px 16px;
+	background: #0984e3;
+	color: #f1f1f1;
+  }
+  
+  .content {
+	padding: 16px;
+  }
+  
+  .sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+  }
+  
+  .sticky + .content {
+	padding-top: 102px;
+  }
